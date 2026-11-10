@@ -1,0 +1,542 @@
+[
+  {
+    "label": "target",
+    "path": "2025-07-16_Ragexe.exe",
+    "sha256": "ca7a0d1b344c0cdb55d8e6130245bf86f712798f9461bf78fcfdc3764159c7dc",
+    "resource_manager": "0x15fa3c0",
+    "tables": [
+      {
+        "sex": "male",
+        "vector": "0x15fb30c",
+        "resource_manager_offset": "0xf4c",
+        "initializer_start": "0xd680db",
+        "entries": [
+          {
+            "logical_style": 0,
+            "filename_stem": "2",
+            "store_instruction": "0xd680dd",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 1,
+            "filename_stem": "2",
+            "store_instruction": "0xd680e5",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 2,
+            "filename_stem": "1",
+            "store_instruction": "0xd680ee",
+            "string_va": "0xfda66c"
+          },
+          {
+            "logical_style": 3,
+            "filename_stem": "7",
+            "store_instruction": "0xd680f7",
+            "string_va": "0x1036ff8"
+          },
+          {
+            "logical_style": 4,
+            "filename_stem": "5",
+            "store_instruction": "0xd68100",
+            "string_va": "0x1036ff0"
+          },
+          {
+            "logical_style": 5,
+            "filename_stem": "4",
+            "store_instruction": "0xd68109",
+            "string_va": "0x1036fec"
+          },
+          {
+            "logical_style": 6,
+            "filename_stem": "3",
+            "store_instruction": "0xd68112",
+            "string_va": "0x1036fe8"
+          },
+          {
+            "logical_style": 7,
+            "filename_stem": "6",
+            "store_instruction": "0xd6811b",
+            "string_va": "0x1036ff4"
+          },
+          {
+            "logical_style": 8,
+            "filename_stem": "8",
+            "store_instruction": "0xd68124",
+            "string_va": "0x1036ffc"
+          },
+          {
+            "logical_style": 9,
+            "filename_stem": "9",
+            "store_instruction": "0xd6812d",
+            "string_va": "0x1037000"
+          },
+          {
+            "logical_style": 10,
+            "filename_stem": "10",
+            "store_instruction": "0xd68136",
+            "string_va": "0x1097220"
+          },
+          {
+            "logical_style": 11,
+            "filename_stem": "12",
+            "store_instruction": "0xd6813f",
+            "string_va": "0x1097224"
+          },
+          {
+            "logical_style": 12,
+            "filename_stem": "11",
+            "store_instruction": "0xd68148",
+            "string_va": "0x1097228"
+          },
+          {
+            "logical_style": 13,
+            "filename_stem": "13",
+            "store_instruction": "0xd68151",
+            "string_va": "0x109722c"
+          },
+          {
+            "logical_style": 14,
+            "filename_stem": "14",
+            "store_instruction": "0xd6815a",
+            "string_va": "0x1097230"
+          },
+          {
+            "logical_style": 15,
+            "filename_stem": "15",
+            "store_instruction": "0xd68163",
+            "string_va": "0x1097234"
+          },
+          {
+            "logical_style": 16,
+            "filename_stem": "16",
+            "store_instruction": "0xd6816c",
+            "string_va": "0x1097238"
+          },
+          {
+            "logical_style": 17,
+            "filename_stem": "17",
+            "store_instruction": "0xd68175",
+            "string_va": "0x109723c"
+          },
+          {
+            "logical_style": 18,
+            "filename_stem": "18",
+            "store_instruction": "0xd6817e",
+            "string_va": "0x1097240"
+          },
+          {
+            "logical_style": 19,
+            "filename_stem": "19",
+            "store_instruction": "0xd68187",
+            "string_va": "0x1097244"
+          },
+          {
+            "logical_style": 20,
+            "filename_stem": "20",
+            "store_instruction": "0xd68190",
+            "string_va": "0x1097248"
+          },
+          {
+            "logical_style": 21,
+            "filename_stem": "21",
+            "store_instruction": "0xd68199",
+            "string_va": "0x109724c"
+          },
+          {
+            "logical_style": 22,
+            "filename_stem": "22",
+            "store_instruction": "0xd681a2",
+            "string_va": "0x1097250"
+          },
+          {
+            "logical_style": 23,
+            "filename_stem": "23",
+            "store_instruction": "0xd681ab",
+            "string_va": "0x1097254"
+          },
+          {
+            "logical_style": 24,
+            "filename_stem": "24",
+            "store_instruction": "0xd681b4",
+            "string_va": "0x1097258"
+          },
+          {
+            "logical_style": 25,
+            "filename_stem": "25",
+            "store_instruction": "0xd681bd",
+            "string_va": "0x109725c"
+          },
+          {
+            "logical_style": 26,
+            "filename_stem": "26",
+            "store_instruction": "0xd681c6",
+            "string_va": "0x1097260"
+          },
+          {
+            "logical_style": 27,
+            "filename_stem": "27",
+            "store_instruction": "0xd681cf",
+            "string_va": "0x1097264"
+          },
+          {
+            "logical_style": 28,
+            "filename_stem": "28",
+            "store_instruction": "0xd681d8",
+            "string_va": "0x1097268"
+          },
+          {
+            "logical_style": 29,
+            "filename_stem": "29",
+            "store_instruction": "0xd681e1",
+            "string_va": "0x109726c"
+          },
+          {
+            "logical_style": 30,
+            "filename_stem": "30",
+            "store_instruction": "0xd681f1",
+            "string_va": "0x1097270"
+          },
+          {
+            "logical_style": 31,
+            "filename_stem": "31",
+            "store_instruction": "0xd681fa",
+            "string_va": "0x1097274"
+          },
+          {
+            "logical_style": 32,
+            "filename_stem": "32",
+            "store_instruction": "0xd68203",
+            "string_va": "0x1097278"
+          },
+          {
+            "logical_style": 33,
+            "filename_stem": "33",
+            "store_instruction": "0xd6820f",
+            "string_va": "0x109727c"
+          },
+          {
+            "logical_style": 34,
+            "filename_stem": "34",
+            "store_instruction": "0xd6821b",
+            "string_va": "0x1097280"
+          },
+          {
+            "logical_style": 35,
+            "filename_stem": "35",
+            "store_instruction": "0xd68227",
+            "string_va": "0x1097284"
+          },
+          {
+            "logical_style": 36,
+            "filename_stem": "36",
+            "store_instruction": "0xd68233",
+            "string_va": "0x1097288"
+          },
+          {
+            "logical_style": 37,
+            "filename_stem": "37",
+            "store_instruction": "0xd6823f",
+            "string_va": "0x109728c"
+          },
+          {
+            "logical_style": 38,
+            "filename_stem": "38",
+            "store_instruction": "0xd6824b",
+            "string_va": "0x1097290"
+          },
+          {
+            "logical_style": 39,
+            "filename_stem": "39",
+            "store_instruction": "0xd68257",
+            "string_va": "0x1097294"
+          },
+          {
+            "logical_style": 40,
+            "filename_stem": "40",
+            "store_instruction": "0xd68263",
+            "string_va": "0x1097298"
+          },
+          {
+            "logical_style": 41,
+            "filename_stem": "41",
+            "store_instruction": "0xd6826f",
+            "string_va": "0x109729c"
+          },
+          {
+            "logical_style": 42,
+            "filename_stem": "42",
+            "store_instruction": "0xd68283",
+            "string_va": "0x10972a0"
+          }
+        ]
+      },
+      {
+        "sex": "female",
+        "vector": "0x15fb318",
+        "resource_manager_offset": "0xf58",
+        "initializer_start": "0xd68298",
+        "entries": [
+          {
+            "logical_style": 0,
+            "filename_stem": "2",
+            "store_instruction": "0xd6829a",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 1,
+            "filename_stem": "2",
+            "store_instruction": "0xd682a2",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 2,
+            "filename_stem": "4",
+            "store_instruction": "0xd682ab",
+            "string_va": "0x1036fec"
+          },
+          {
+            "logical_style": 3,
+            "filename_stem": "7",
+            "store_instruction": "0xd682b4",
+            "string_va": "0x1036ff8"
+          },
+          {
+            "logical_style": 4,
+            "filename_stem": "1",
+            "store_instruction": "0xd682bd",
+            "string_va": "0xfda66c"
+          },
+          {
+            "logical_style": 5,
+            "filename_stem": "5",
+            "store_instruction": "0xd682c6",
+            "string_va": "0x1036ff0"
+          },
+          {
+            "logical_style": 6,
+            "filename_stem": "3",
+            "store_instruction": "0xd682cf",
+            "string_va": "0x1036fe8"
+          },
+          {
+            "logical_style": 7,
+            "filename_stem": "6",
+            "store_instruction": "0xd682d8",
+            "string_va": "0x1036ff4"
+          },
+          {
+            "logical_style": 8,
+            "filename_stem": "12",
+            "store_instruction": "0xd682e1",
+            "string_va": "0x1097224"
+          },
+          {
+            "logical_style": 9,
+            "filename_stem": "10",
+            "store_instruction": "0xd682ea",
+            "string_va": "0x1097220"
+          },
+          {
+            "logical_style": 10,
+            "filename_stem": "9",
+            "store_instruction": "0xd682f3",
+            "string_va": "0x1037000"
+          },
+          {
+            "logical_style": 11,
+            "filename_stem": "11",
+            "store_instruction": "0xd682fc",
+            "string_va": "0x1097228"
+          },
+          {
+            "logical_style": 12,
+            "filename_stem": "8",
+            "store_instruction": "0xd68305",
+            "string_va": "0x1036ffc"
+          },
+          {
+            "logical_style": 13,
+            "filename_stem": "13",
+            "store_instruction": "0xd6830e",
+            "string_va": "0x109722c"
+          },
+          {
+            "logical_style": 14,
+            "filename_stem": "14",
+            "store_instruction": "0xd68317",
+            "string_va": "0x1097230"
+          },
+          {
+            "logical_style": 15,
+            "filename_stem": "15",
+            "store_instruction": "0xd68320",
+            "string_va": "0x1097234"
+          },
+          {
+            "logical_style": 16,
+            "filename_stem": "16",
+            "store_instruction": "0xd68329",
+            "string_va": "0x1097238"
+          },
+          {
+            "logical_style": 17,
+            "filename_stem": "17",
+            "store_instruction": "0xd68332",
+            "string_va": "0x109723c"
+          },
+          {
+            "logical_style": 18,
+            "filename_stem": "18",
+            "store_instruction": "0xd6833b",
+            "string_va": "0x1097240"
+          },
+          {
+            "logical_style": 19,
+            "filename_stem": "19",
+            "store_instruction": "0xd68344",
+            "string_va": "0x1097244"
+          },
+          {
+            "logical_style": 20,
+            "filename_stem": "20",
+            "store_instruction": "0xd6834d",
+            "string_va": "0x1097248"
+          },
+          {
+            "logical_style": 21,
+            "filename_stem": "21",
+            "store_instruction": "0xd68356",
+            "string_va": "0x109724c"
+          },
+          {
+            "logical_style": 22,
+            "filename_stem": "22",
+            "store_instruction": "0xd6835f",
+            "string_va": "0x1097250"
+          },
+          {
+            "logical_style": 23,
+            "filename_stem": "23",
+            "store_instruction": "0xd68368",
+            "string_va": "0x1097254"
+          },
+          {
+            "logical_style": 24,
+            "filename_stem": "24",
+            "store_instruction": "0xd68378",
+            "string_va": "0x1097258"
+          },
+          {
+            "logical_style": 25,
+            "filename_stem": "25",
+            "store_instruction": "0xd68381",
+            "string_va": "0x109725c"
+          },
+          {
+            "logical_style": 26,
+            "filename_stem": "26",
+            "store_instruction": "0xd6838a",
+            "string_va": "0x1097260"
+          },
+          {
+            "logical_style": 27,
+            "filename_stem": "27",
+            "store_instruction": "0xd68393",
+            "string_va": "0x1097264"
+          },
+          {
+            "logical_style": 28,
+            "filename_stem": "28",
+            "store_instruction": "0xd6839c",
+            "string_va": "0x1097268"
+          },
+          {
+            "logical_style": 29,
+            "filename_stem": "29",
+            "store_instruction": "0xd683a5",
+            "string_va": "0x109726c"
+          },
+          {
+            "logical_style": 30,
+            "filename_stem": "30",
+            "store_instruction": "0xd683ae",
+            "string_va": "0x1097270"
+          },
+          {
+            "logical_style": 31,
+            "filename_stem": "31",
+            "store_instruction": "0xd683b7",
+            "string_va": "0x1097274"
+          },
+          {
+            "logical_style": 32,
+            "filename_stem": "32",
+            "store_instruction": "0xd683c0",
+            "string_va": "0x1097278"
+          },
+          {
+            "logical_style": 33,
+            "filename_stem": "33",
+            "store_instruction": "0xd683cc",
+            "string_va": "0x109727c"
+          },
+          {
+            "logical_style": 34,
+            "filename_stem": "34",
+            "store_instruction": "0xd683d8",
+            "string_va": "0x1097280"
+          },
+          {
+            "logical_style": 35,
+            "filename_stem": "35",
+            "store_instruction": "0xd683e4",
+            "string_va": "0x1097284"
+          },
+          {
+            "logical_style": 36,
+            "filename_stem": "36",
+            "store_instruction": "0xd683f0",
+            "string_va": "0x1097288"
+          },
+          {
+            "logical_style": 37,
+            "filename_stem": "37",
+            "store_instruction": "0xd683fc",
+            "string_va": "0x109728c"
+          },
+          {
+            "logical_style": 38,
+            "filename_stem": "38",
+            "store_instruction": "0xd68408",
+            "string_va": "0x1097290"
+          },
+          {
+            "logical_style": 39,
+            "filename_stem": "39",
+            "store_instruction": "0xd68414",
+            "string_va": "0x1097294"
+          },
+          {
+            "logical_style": 40,
+            "filename_stem": "40",
+            "store_instruction": "0xd68420",
+            "string_va": "0x1097298"
+          },
+          {
+            "logical_style": 41,
+            "filename_stem": "41",
+            "store_instruction": "0xd6842c",
+            "string_va": "0x109729c"
+          },
+          {
+            "logical_style": 42,
+            "filename_stem": "42",
+            "store_instruction": "0xd68440",
+            "string_va": "0x10972a0"
+          }
+        ]
+      }
+    ]
+  }
+]

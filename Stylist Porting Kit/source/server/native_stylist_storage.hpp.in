@@ -1,0 +1,5 @@
+#pragma once
+// Native Stylist by ICE & SCIEL
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Generate per-install table identifiers after applying the server patch.
+#error "Native Stylist: run source/tools/configure_storage.py against this server before building"

@@ -38,3 +38,4 @@ include:
     - Patches/UI.yml
     - Patches/Window.yml
     - Patches/Premium.yml
+    - Patches/NativeStylist.yml

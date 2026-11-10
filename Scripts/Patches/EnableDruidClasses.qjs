@@ -1499,6 +1499,14 @@ EnableDruidClasses = function(_)
 	bp += CALL(Filler(3));               // CALL getField
 	bp += " 85 C0";                      // TEST EAX, EAX
 	bp += JZ(Filler(2));                 // JZ .pop               no form
+	// Native Stylist compatibility by ICE & SCIEL. Reserved character palette
+	// IDs are runtime recipes, not numbered form palette files. Keep this
+	// transformed body on its embedded sprite palette without changing its ID.
+	bp += " 81 7E 48 30 75 00 00";       // CMP [ESI+0x48], 30000
+	bp += JB(Filler(7));                 // JB .load              ordinary palette
+	bp += " 81 7E 48 30 79 00 00";       // CMP [ESI+0x48], 31024
+	bp += JB(Filler(2));                 // JB .pop               Stylist character recipe
+	const bpLoad = bp.byteCount();
 	bp += CALL(Filler(4));               // CALL the resource manager
 	bp += " 8D 4E 1C";                   // LEA ECX, [ESI+0x1C]   the palette name
 	bp += " 83 79 14 10";                // CMP DWORD [ECX+0x14], 16
@@ -1515,7 +1523,7 @@ EnableDruidClasses = function(_)
 	bp += JMP(Filler(6));                // .back
 	const [bpP, bpV] = Exe.Allocate(bp.byteCount(), 0x10);
 	Exe.SetHex(bpP, SetFillTargets(bp, {start: bpV, 1: bpV + bpBack, 2: bpV + bpPop, 3: gfV, 4: resMgrVir,
-		5: resLoadVir, 6: Exe.Phy2Vir(bpPhy + 22, CODE)}));
+		5: resLoadVir, 6: Exe.Phy2Vir(bpPhy + 22, CODE), 7: bpV + bpLoad}));
 	Exe.SetJMP(bpPhy + 16, bpV);
 	Exe.SetHex(bpPhy + 21, " 90");
 
@@ -1572,6 +1580,17 @@ EnableDruidClasses = function(_)
 	rp += CALL(Filler(4));               // CALL getField          form
 	rp += " 5A 8B C8";                   // POP EDX / MOV ECX, EAX
 	rp += CALL(Filler(5));               // CALL formName          EAX = "WEREWOLF"...
+	// Pair the renderer fallback with an empty form palette name. The actor's
+	// recipe ID remains intact so its saved colors can return after the form.
+	rp += " 81 7E 48 30 75 00 00";       // CMP [ESI+0x48], 30000
+	rp += JB(Filler(13));                // JB .name              ordinary palette
+	rp += " 81 7E 48 30 79 00 00";       // CMP [ESI+0x48], 31024
+	rp += JAE(Filler(13));               // JAE .name             outside character recipe range
+	rp += " 6A 00 68" + formName[""].toHex(4); // PUSH 0 / PUSH empty string
+	rp += " 8D 4E 1C";                   // LEA ECX, [ESI+0x1C]
+	rp += CALL(Filler(10));              // CALL std::string assign
+	rp += JMP(Filler(11));               // JMP exit              no numbered palette lookup
+	const rpName = rp.byteCount();
 	rp += " BF" + palBuf.toHex(4);       // MOV EDI, buffer
 	rp += " C7 07 B8 F6 5C 00";          // MOV DWORD [EDI], "몸\"
 	rp += " 83 C7 03";                   // ADD EDI, 3
@@ -1606,7 +1625,7 @@ EnableDruidClasses = function(_)
 	rp += JMP(Filler(12));               // JMP back
 	const [rpP, rpV] = Exe.Allocate(rp.byteCount(), 0x10);
 	Exe.SetHex(rpP, SetFillTargets(rp, {start: rpV, 1: rpV + rpStock, 2: getJobVir, 3: bfV, 4: gfV, 5: fnV,
-		6: rpV + rpNum, 7: rpV + rpCopy, 8: rpV + rpDiv, 9: rpV + rpPut, 10: assignVir, 11: rpExitVir, 12: rpBackVir}));
+		6: rpV + rpNum, 7: rpV + rpCopy, 8: rpV + rpDiv, 9: rpV + rpPut, 10: assignVir, 11: rpExitVir, 12: rpBackVir, 13: rpV + rpName}));
 	Exe.SetJMP(rpPhy + 8, rpV);
 	Exe.SetHex(rpPhy + 13, " 90 90");
 

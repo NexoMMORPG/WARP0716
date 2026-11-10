@@ -1,0 +1,132 @@
+// Native Stylist by ICE & SCIEL
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Select alongside other compatible WARP patches on the clean supported client.
+const NativeStylistProfile = __PROFILE__
+__HAIR_HELPER__
+
+const NativeStylistTools = {
+    bytes: function(hex) {
+        const compact = (hex || '').replace(/\s/g, '')
+        if (compact.length % 2 || /[^0-9a-f]/i.test(compact)) throw Error('Native Stylist: invalid binary data')
+        const out = []
+        for (let i=0; i<compact.length; i+=2) out.push(parseInt(compact.substr(i,2),16))
+        return out
+    },
+    hex: function(bytes) { return bytes.map(b=>('0'+b.toString(16)).slice(-2)).join(' ') },
+    u32: function(b,i) { return (b[i]|b[i+1]<<8|b[i+2]<<16|b[i+3]<<24)>>>0 },
+    put32: function(b,i,v) { v>>>=0; b[i]=v&255; b[i+1]=v>>>8&255; b[i+2]=v>>>16&255; b[i+3]=v>>>24 },
+    crc: function(bytes) {
+        let crc=0xffffffff
+        for (const b of bytes) {
+            crc^=b
+            for (let bit=0;bit<8;bit++) crc=crc&1?0xedb88320^(crc>>>1):crc>>>1
+        }
+        return (crc^0xffffffff)>>>0
+    },
+    read: function(va,n) {
+        const raw=Exe.Vir2Phy(va)
+        if(raw<0)throw Error('Native Stylist: unmapped native address '+va.toString(16))
+        const data=this.bytes(Exe.GetHex(raw,n,true))
+        if(data.length!==n)throw Error('Native Stylist: truncated native data')
+        return {raw,data}
+    },
+    hair: function(site) {
+        const b=this.read(site.va,5).data
+        if(this.hex(b)==='8b 14 88 8b ca')return {stock:true}
+        if(b[0]!==0xe9)throw Error('Native Stylist: conflicting hairstyle hook at '+site.va.toString(16))
+        const va=(site.va+5+(this.u32(b,1)|0))>>>0
+        const data=this.read(va,38).data
+        if(this.hex(data.slice(0,2))!=='81 f9'||this.hex(data.slice(6,14))!=='7e 03 33 c9 41 83 f9 2b'||this.hex(data.slice(14,22))!=='7d 0a 8b 14 88 8b ca e9'||data[26]!==0xe8||this.hex(data.slice(31,34))!=='8b ca e9')
+            throw Error('Native Stylist: unsupported hairstyle adapter at '+site.va.toString(16))
+        if(((va+26+(this.u32(data,22)|0))>>>0)!==site.va+5||((va+38+(this.u32(data,34)|0))>>>0)!==site.va+5)
+            throw Error('Native Stylist: hairstyle adapter return mismatch')
+        return {stock:false,va,data}
+    },
+    check: function() {
+        if(Exe.BuildDate!==20250716||Exe.ImageBase!==0x400000)
+            throw Error('Native Stylist: this native address profile supports Ragexe 2025-07-16 x86')
+        const pe=Exe.GetInt32(0x3c)
+        const machine=this.bytes(Exe.GetHex(pe+4,2,true))
+        if(this.hex(machine)!=='4c 01')throw Error('Native Stylist: x86 client required')
+        const load=this.bytes(Exe.GetHex(pe+24+96+80,8,true))
+        if(this.u32(load,0)&&this.u32(load,4)>=72){
+            const seh=this.read(0x400000+this.u32(load,0)+64,8).data
+            if(this.u32(seh,0)||this.u32(seh,4))throw Error('Native Stylist: this profile requires a host without a SafeSEH table')
+        }
+        for(const guard of NativeStylistProfile.guards) {
+            const wanted=this.bytes(guard.hex),actual=this.read(guard.va,wanted.length).data
+            if(this.hex(actual)!==this.hex(wanted))throw Error('Native Stylist: conflicting '+guard.name+' at 0x'+guard.va.toString(16))
+        }
+        const hair=NativeStylistProfile.hairs.map(site=>this.hair(site))
+        if(hair.some(p=>p.stock)&&!hair.every(p=>p.stock))throw Error('Native Stylist: incomplete external hairstyle adapter')
+        return hair.every(p=>p.stock)
+    }
+}
+
+NativeStylist=function(_) {
+    const p=NativeStylistProfile,t=NativeStylistTools
+    $$(_,1,'Checking native hooks in the current patch session')
+    const needHair=t.check()
+    const file=new BinFile(Warp.Path+'Inputs/NativeStylist/native_stylist.dll','r')
+    if(!file.Valid)throw Error('Native Stylist: missing Inputs/NativeStylist/native_stylist.dll')
+    const bytes=t.bytes(file.ReadHex())
+    file.Close()
+    if(bytes.length!==p.fileSize||t.crc(bytes)!==p.crc32)throw Error('Native Stylist: payload does not match this QJS')
+    const image=new Array(p.imageSize).fill(0)
+    for(let i=0;i<p.headers;i++)image[i]=bytes[i]
+    for(const section of p.sections) {
+        if(section.raw+section.size>bytes.length||section.rva+section.size>image.length)throw Error('Native Stylist: invalid payload section')
+        for(let i=0;i<section.size;i++)image[section.rva+i]=bytes[section.raw+i]
+    }
+    for(const at of p.relocations) {
+        if(at<p.headers||at+4>image.length)throw Error('Native Stylist: invalid payload relocation')
+        const v=t.u32(image,at)
+        if(v<p.linkedBase||v>=p.linkedBase+p.imageSize)throw Error('Native Stylist: relocation outside payload')
+    }
+    $$(_,2,'Preparing hairstyle support')
+    const generated=needHair?NativeStylistHairExpansion.call(NativeStylistHairExpansion,_):null
+    if(generated&&generated.length!==p.hairs.length)throw Error('Native Stylist: incomplete generated hairstyle adapters')
+    const limits=[65535,65535]
+    for(const site of p.hairs) {
+        let cap
+        if(generated){
+            const found=generated.filter(h=>h.site===site.va)
+            if(found.length!==1)throw Error('Native Stylist: generated hairstyle site mismatch')
+            const h=found[0],branch=t.read(site.va,5).data
+            if(branch[0]!==0xe9||((site.va+5+(t.u32(branch,1)|0))>>>0)!==h.va||Exe.Vir2Phy(h.va)<0)
+                throw Error('Native Stylist: generated hairstyle target mismatch')
+            cap=h.limit
+        }else{
+            const h=t.hair(site)
+            if(h.stock)throw Error('Native Stylist: hairstyle adapter was not installed')
+            cap=t.u32(h.data,2)
+        }
+        if(!cap||cap>65535)throw Error('Native Stylist: invalid hairstyle limit')
+        const domain=site.doram?1:0
+        limits[domain]=Math.min(limits[domain],cap)
+    }
+    $$(_,3,'Embedding the relocatable Stylist module')
+    const allocation=Exe.Allocate(p.imageSize,0x1000),raw=allocation[0],va=allocation[1]
+    if(raw<0||va<0x400000||va+p.imageSize>=0x80000000)throw Error('Native Stylist: invalid allocation')
+    for(const at of p.relocations)t.put32(image,at,t.u32(image,at)+va-p.linkedBase)
+    t.put32(image,p.exports.NativeHairLimits,limits[0])
+    t.put32(image,p.exports.NativeHairLimits+4,limits[1])
+    for(let at=0;at<image.length;at+=16384)Exe.SetHex(raw+at,t.hex(image.slice(at,at+16384)))
+    $$(_,4,'Installing Stylist hooks without restoring previous patch data')
+    for(const hook of p.hooks) {
+        const patch=[],target=va+p.exports[hook.symbol]
+        if(hook.opcode) {
+            patch.push(hook.opcode,0,0,0,0)
+            t.put32(patch,1,target-hook.va-5)
+            while(patch.length<hook.size)patch.push(0x90)
+        } else t.put32(patch,0,target)
+        Exe.SetHex(t.read(hook.va,hook.size).raw,t.hex(patch))
+    }
+    const pe=Exe.GetInt32(0x3c),flags=pe+24+70
+    const before=t.bytes(Exe.GetHex(flags,2,true))
+    before[0]&=0xbf
+    Exe.SetHex(flags,t.hex(before))
+    Exe.SetHex(pe+24+64,'00 00 00 00')
+    return true
+}
+NativeStylist.validate=function(){return Exe.BuildDate===20250716&&Exe.ImageBase===0x400000}

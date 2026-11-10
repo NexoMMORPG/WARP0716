@@ -1,0 +1,9 @@
+NativeStylistCommunity:
+    title: NATIVE STYLIST
+    mutex: false
+    patches:
+        - NativeStylist:
+            title: Native Stylist by ICE & SCIEL
+            author: ICE & SCIEL
+            recommend: no
+            desc: Native RGB Stylist for Ragexe 2025-07-16. Select alongside compatible patches on the clean client. Requires the matching GRF and server integration.

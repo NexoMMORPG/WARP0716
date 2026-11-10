@@ -1,0 +1,148 @@
+[
+  {
+    "label": "target",
+    "path": "2025-07-16_Ragexe.exe",
+    "sha256": "ca7a0d1b344c0cdb55d8e6130245bf86f712798f9461bf78fcfdc3764159c7dc",
+    "resource_manager": "0x15fa3c0",
+    "tables": [
+      {
+        "sex": "male",
+        "vector": "0x160052c",
+        "resource_manager_offset": "0x616c",
+        "vector_reference": "0xd68438",
+        "entries": [
+          {
+            "logical_style": 1,
+            "filename_stem": "1",
+            "store_instruction": "0xd6845e",
+            "string_va": "0xfda66c"
+          },
+          {
+            "logical_style": 2,
+            "filename_stem": "2",
+            "store_instruction": "0xd68467",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 3,
+            "filename_stem": "3",
+            "store_instruction": "0xd68470",
+            "string_va": "0x1036fe8"
+          },
+          {
+            "logical_style": 4,
+            "filename_stem": "4",
+            "store_instruction": "0xd68479",
+            "string_va": "0x1036fec"
+          },
+          {
+            "logical_style": 5,
+            "filename_stem": "5",
+            "store_instruction": "0xd68482",
+            "string_va": "0x1036ff0"
+          },
+          {
+            "logical_style": 6,
+            "filename_stem": "6",
+            "store_instruction": "0xd6848b",
+            "string_va": "0x1036ff4"
+          },
+          {
+            "logical_style": 7,
+            "filename_stem": "7",
+            "store_instruction": "0xd68494",
+            "string_va": "0x1036ff8"
+          },
+          {
+            "logical_style": 8,
+            "filename_stem": "8",
+            "store_instruction": "0xd6849d",
+            "string_va": "0x1036ffc"
+          },
+          {
+            "logical_style": 9,
+            "filename_stem": "9",
+            "store_instruction": "0xd684a6",
+            "string_va": "0x1037000"
+          },
+          {
+            "logical_style": 10,
+            "filename_stem": "10",
+            "store_instruction": "0xd684b7",
+            "string_va": "0x1097220"
+          }
+        ],
+        "index_zero": "not selectable in native Doram path, not claimed by this initializer extraction"
+      },
+      {
+        "sex": "female",
+        "vector": "0x1600538",
+        "resource_manager_offset": "0x6178",
+        "vector_reference": "0xd684af",
+        "entries": [
+          {
+            "logical_style": 1,
+            "filename_stem": "1",
+            "store_instruction": "0xd684cb",
+            "string_va": "0xfda66c"
+          },
+          {
+            "logical_style": 2,
+            "filename_stem": "2",
+            "store_instruction": "0xd684d4",
+            "string_va": "0x1036fe4"
+          },
+          {
+            "logical_style": 3,
+            "filename_stem": "3",
+            "store_instruction": "0xd684dd",
+            "string_va": "0x1036fe8"
+          },
+          {
+            "logical_style": 4,
+            "filename_stem": "4",
+            "store_instruction": "0xd684e6",
+            "string_va": "0x1036fec"
+          },
+          {
+            "logical_style": 5,
+            "filename_stem": "5",
+            "store_instruction": "0xd684ef",
+            "string_va": "0x1036ff0"
+          },
+          {
+            "logical_style": 6,
+            "filename_stem": "6",
+            "store_instruction": "0xd68505",
+            "string_va": "0x1036ff4"
+          },
+          {
+            "logical_style": 7,
+            "filename_stem": "7",
+            "store_instruction": "0xd6850e",
+            "string_va": "0x1036ff8"
+          },
+          {
+            "logical_style": 8,
+            "filename_stem": "8",
+            "store_instruction": "0xd68517",
+            "string_va": "0x1036ffc"
+          },
+          {
+            "logical_style": 9,
+            "filename_stem": "9",
+            "store_instruction": "0xd68520",
+            "string_va": "0x1037000"
+          },
+          {
+            "logical_style": 10,
+            "filename_stem": "10",
+            "store_instruction": "0xd684b7",
+            "string_va": "0x1097220"
+          }
+        ],
+        "index_zero": "not selectable in native Doram path, not claimed by this initializer extraction"
+      }
+    ]
+  }
+]
